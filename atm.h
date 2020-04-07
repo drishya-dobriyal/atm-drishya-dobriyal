@@ -1,7 +1,7 @@
 unsigned int get_money(unsigned short int);
 
 unsigned int get_money(unsigned short int amount ) {
-  unsigned short int curr_notes = 0;
+  unsigned  int curr_notes = 0;
   int notes[] = { 2000, 500, 100, 50, 20, 10, 5, 1};
   int *note_ptr = notes;
   int num = 8;
