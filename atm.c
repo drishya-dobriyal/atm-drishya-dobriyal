@@ -3,7 +3,7 @@
 
 unsigned int get_money(unsigned short int amount ) {
   unsigned  int curr_notes = 0x00000000;
-  int notes[] = { 2000, 500, 100, 50, 20, 10, 5, 1};
+  int notes[] = DENOMINATIONS;
 
   if( amount > MAX_VALUE ){
     return curr_notes;
@@ -17,11 +17,11 @@ unsigned int get_money(unsigned short int amount ) {
 }
 
 void print_notes(unsigned  int notes ){
-  unsigned int notes_weight, notes_value = 0xf0000000;
-  int notes_list[] ={ 1, 5, 10, 20,  50, 100,500, 2000};
-  for(int i = 7; i >= 0; i--){
-    notes_weight = (notes_value & notes) >> (i * 4);
-    notes_weight && printf("%d notes of rupees %d\n",notes_weight, notes_list[i]);
-    notes_value = notes_value >> 4;
+  unsigned int note_weight, note_position = 0xf0000000;
+  int notes_list[] = DENOMINATIONS;
+  for(int i = 0; i < 8; i++){
+    note_weight = (note_position & notes) >> ((7 - i) * 4);
+    note_weight && printf("%d notes of rupees %d\n",note_weight, notes_list[i]);
+    note_position = note_position >> 4;
   }
 }
