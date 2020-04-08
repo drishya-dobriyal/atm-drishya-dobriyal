@@ -9,9 +9,9 @@ unsigned int get_money(unsigned short int amount ) {
     return curr_notes;
   }
   for( int i = 0; i < 8; i++) {
-    curr_notes = curr_notes << 4;
-    curr_notes = curr_notes | amount / notes[i];
-    amount = amount % notes[i];
+    curr_notes <<= 4;
+    curr_notes |= amount / notes[i];
+    amount %= notes[i];
   }
   return curr_notes;
 }
@@ -22,6 +22,6 @@ void print_notes(unsigned  int notes ){
   for(int i = 0; i < 8; i++){
     note_weight = (note_position & notes) >> ((7 - i) * 4);
     note_weight && printf("%d notes of rupees %d\n",note_weight, notes_list[i]);
-    note_position = note_position >> 4;
+    note_position >>= 4;
   }
 }
